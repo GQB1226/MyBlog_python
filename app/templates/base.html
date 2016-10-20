@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>MyBlog</title>
+<meta name="keywords" content="MyBolg" />
+<meta name="description" content="" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-markdown/2.8.0/css/bootstrap-markdown.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css')}}"/>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}"/>
+<script type="text/javascript" src="{{ url_for('static', filename='js/jquery1.42.min.js')}}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.SuperSlide.2.1.1.js')}}"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/pagedown/1.0/Markdown.Converter.js"> </script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/pagedown/1.0/Markdown.Editor.js"> </script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/pagedown/1.0/Markdown.Sanitizer.js"> </script>
+
+<!--[if lt IE 9]>
+<script src="{{ url_for('static', filename='js/html5.js')}}"></script>
+<![endif]-->
+    <div id="header" style="font-size: 150px">
+      <h1>MyBlog</h1>
+    </div>
+     <div id="nav">
+        <ul>
+         <div class="clear"></div>
+        </ul>
+      </div>
+    {% block ha %}
+    {% endblock ha %}
+</head>
+
+<body>
+    {% block content %}
+    {% endblock %}
+</body>
+
+</html>

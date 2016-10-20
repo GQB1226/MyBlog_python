@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block ha %}
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet"/>
+{% endblock ha %}
+{% block content%}
+    <script src="{{ url_for('static',filename='ckeditor/ckeditor.js') }}"></script>
+{% if current_user.is_authenticated %}
+    <form action="" method="post" class="form" >
+            {{ form.hidden_tag() }}
+    <fieldset>
+        <!-- Text input-->
+        <div class="form-group">
+            <div class="col-md-1 col-md-offset-2" style="text-align: center ; font-size:22px">题 目：</div>
+            <div class="input-group col-md-7 ">
+                {{form.title(placeholder="Title", id="title", class="form-control", required="" )}}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="input-group col-md-8 col-md-offset-2" >
+                {{form.body(id="content",class="ckeditor",row="80")}}
+                <script type="text/javascript">
+                   CKEDITOR.replace(
+                      "content", {
+                         filebrowserUploadUrl: '/ckupload/'
+                    }
+                    );
+                </script>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2">
+                {{ form.submit(id="submit", class="btn btn-primary") }}
+            </div>
+        </div>
+    </fieldset>
+
+    </form>
+
+{% else %}
+    <div class="center">
+        <h1>你没有权限！点击登陆</h1>
+    </div>
+
+    {% endif %}
+{% endblock content%}
+
