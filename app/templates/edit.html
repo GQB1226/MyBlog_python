@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% block ha %}
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet"/>
 {% endblock ha %}
 {% block content%}
     <script src="{{ url_for('static',filename='ckeditor/ckeditor.js') }}"></script>
@@ -9,16 +8,16 @@
             {{ form.hidden_tag() }}
     <fieldset>
         <!-- Text input-->
-        <div class="form-group">
-            <div class="col-md-1 col-md-offset-2" style="text-align: center ; font-size:22px">题 目：</div>
-            <div class="input-group col-md-7 ">
+        <div class="form-group" style="padding-top: 30px;">
+            <div class="col-md-1 col-md-offset-1 " style="text-align: center ; font-size:16px">题 目：</div>
+            <div class="input-group col-md-9 ">
                 {{form.title(placeholder="Title", id="title", class="form-control", required="" )}}
             </div>
         </div>
 
         <div class="form-group">
-            <div class="input-group col-md-8 col-md-offset-2" >
-                {{form.body(id="content",class="ckeditor",row="80")}}
+            <div class="input-group col-md-10 col-md-offset-1 " >
+                {{form.body(id="content",class="ckeditor ",row="100")}}
                 <script type="text/javascript">
                    CKEDITOR.replace(
                       "content", {
@@ -29,7 +28,7 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col-md-offset-2">
+            <div class="col-md-offset-1">
                 {{ form.submit(id="submit", class="btn btn-primary") }}
             </div>
         </div>
@@ -38,8 +37,9 @@
     </form>
 
 {% else %}
-    <div class="center">
-        <h1>你没有权限！点击登陆</h1>
+    <div class="container-fluid bg-1 text-center" style=" padding-top: 70px;padding-bottom: 70px;" >
+        <img src="{{ url_for('static', filename='images/warning.png')}}" class="img-circle center-block" width="350" height="350">
+        <a href="auth/login">你没有权限！点击登陆</a>
     </div>
 
     {% endif %}

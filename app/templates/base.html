@@ -1,38 +1,57 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<title>MyBlog</title>
-<meta name="keywords" content="MyBolg" />
-<meta name="description" content="" />
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-markdown/2.8.0/css/bootstrap-markdown.min.css" rel="stylesheet"/>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css')}}"/>
+  <title>MyBlog</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename= 'css/bootstrap.min.css') }}"/>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/jquery1.42.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+    .row.content {height: 1500px}
 
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}"/>
-<script type="text/javascript" src="{{ url_for('static', filename='js/jquery1.42.min.js')}}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.SuperSlide.2.1.1.js')}}"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/pagedown/1.0/Markdown.Converter.js"> </script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/pagedown/1.0/Markdown.Editor.js"> </script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/pagedown/1.0/Markdown.Sanitizer.js"> </script>
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
 
-<!--[if lt IE 9]>
-<script src="{{ url_for('static', filename='js/html5.js')}}"></script>
-<![endif]-->
-    <div id="header" style="font-size: 150px">
-      <h1>MyBlog</h1>
-    </div>
-     <div id="nav">
-        <ul>
-         <div class="clear"></div>
-        </ul>
-      </div>
-    {% block ha %}
-    {% endblock ha %}
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;}
+    }
+  </style>
 </head>
-
 <body>
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+      <h4>MyBlog</h4>
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="#section2">Friends</a></li>
+        <li><a href="#section3">Family</a></li>
+        <li><a href="#section3">Photos</a></li>
+      </ul><br>
+    </div>
     {% block content %}
     {% endblock %}
+    </div>
+</div>
 </body>
-
+<footer class="container-fluid bg-1 text-center">
+  <p>Copyright © 1991 - 2017 GQB1226. All Rights Reserved </p>
+</footer>
 </html>

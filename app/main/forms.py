@@ -18,3 +18,8 @@ class PostArticle(Form):
    # body=TextField
     submit=SubmitField('Submit')
 
+class articleComment(Form):
+    user_ip=StringField()
+    comment=TextAreaField(validators=[DataRequired()])
+    submit=SubmitField('Submit')
+

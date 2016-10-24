@@ -46,10 +46,22 @@ class User(UserMixin,db.Model):
 class Post(db.Model):
     __tablename__='post'
     id=db.Column(db.Integer,primary_key=True)
+    fileId=db.Column(db.Integer,unique=True)
     title=db.Column(db.String(128),unique=True)
     body=db.Column(db.Text)
     timestamp=db.Column(db.DateTime,index=True,default=datetime.utcnow)
     author_id=db.Column(db.Integer,db.ForeignKey('users.id'))
+    comments=db.Column(db.Integer,default=0)
+    totalNum=db.Column(db.Integer,default=0)
 
+class Comment(db.Model):
+    __tablename__='comment'
+    id=db.Column(db.Integer,primary_key=True)
+    fileId=db.Column(db.Integer,db.ForeignKey('post.fileId'))
+    Sid=db.Column(db.Integer,index=True)
+    Tid=db.Column(db.Integer)
+    comment=db.Column(db.Text)
+    user=db.Column(db.String(128))
+    datetime=db.Column(db.DateTime,index=True,default=datetime.utcnow)
 
 

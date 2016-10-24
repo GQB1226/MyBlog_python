@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+     <div class="col-sm-9">
+    <h1>{{ post.title }}</h1>
+    <h3><span class="glyphicon glyphicon-time"></span> Post by GQB1226, {{ post.timestamp }}.</h3>
+    <h3><span class="label label-success">Lorem</span></h3><br>
+    <h4 >
+        {{ post.body | safe }}
+    </h4>
+         <hr>
+    <h4>Leave a Comment:</h4>
+
+    <form action="" method="post" class="form">
+         {{ comment.hidden_tag() }}
+        <div class="form-group">
+            {{ comment.comment(id="comment",class="form-control",required="") }}
+{#            <textarea class= required></textarea>#}
+        </div>
+        {{ comment.submit(id="submit", class="btn btn-success") }}
+{#        <button type="submit" class="btn btn-success">Submit</button>#}
+    </form>
+    <br><br>
+
+{#    <p><span class="badge">2</span> Comments:</p><br>#}
+    {% for ct in con %}
+        <div class="row">
+            <div class="col-sm-2 text-center">
+                <img src={{ url_for('static',filename="images/guest.png") }} class="img-circle" height="65" width="65" alt="Avatar">
+            </div>
+            <div class="col-sm-10">
+                <h4>{{ ct.user }}
+                    <small>{{ct.datetime}}</small>
+                </h4>
+                <p>{{ ct.comment }}</p>
+                <br>
+            </div>
+        </div>
+     {% endfor %}
+     </div>
+{% endblock content %}
