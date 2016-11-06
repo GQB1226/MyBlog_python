@@ -32,20 +32,47 @@
       }
       .row.content {height: auto;}
     }
+    #tagbox{position:relative;margin:20px auto 0px;width:300px;height:250px;background:#f1f1f1;}
+    #tagbox a{position:absolute;padding:3px 6px;font-family:Microsoft YaHei;color:#fff;TOP:0px;font-weight:bold;text-decoration:none;left:0px}
+    #tagbox a:hover{border:#eee 1px solid;background:#000;}
+    #tagbox .blue{color:blue}
+    #tagbox .red{color:red}
+    #tagbox .yellow{color:#9BCD9B}
+    #tagbox .glinux {color:#CD2626}
+    #tagbox .c{color:#CD2990}
+    #tagbox .java{color:#A0522D}
+
+
   </style>
 </head>
 <body>
+<script type="text/javascript" src="{{ url_for('static', filename='js/tagcloud.js')}}"></script>
 <div class="container-fluid">
   <div class="row content">
     <div class="col-sm-3 sidenav">
       <h4>MyBlog</h4>
       <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="/">Home</a></li>
-        <li><a href="#section2">Friends</a></li>
-        <li><a href="#section3">Family</a></li>
-        <li><a href="#section3">Photos</a></li>
+        <li class="active"><a href="/">首页</a></li>
+        <li><a href="#section2">分类</a></li>
+        <li><a href="#section3">关于</a></li>
       </ul><br>
+        <div id="tagbox">
+            <a class="java" href="#">Java</a>
+            <a class="red" href="#">c</a>
+            <a class="glinux " href="#">linux</a>
+            <a href="#">安全</a>
+            <a class="blue" href="#">渗透测试</a>
+            <a class="c" href="#">C++</a>
+            <a class="red" href="#">网站</a>
+            <a class="yellow" href="#">shell</a>
+            <a class="red" href="#">学习</a>
+            <a class="yellow" href="#">python</a>
+            <a class="yellow" href="#">大数据</a>
+            <a class="yellow" href="#">其他</a>
+
+  </div><br>
     </div>
+
     {% block content %}
     {% endblock %}
     </div>
